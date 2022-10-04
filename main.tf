@@ -15,3 +15,8 @@ provider "azurerm" {
 }
 
 data "azurerm_client_config" "current" {}
+
+module "active_directory" {
+  source          = "./modules/active-directory"
+  virtual_network = azurerm_virtual_network.active_directory
+}

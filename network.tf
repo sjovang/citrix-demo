@@ -9,8 +9,7 @@ resource "azurerm_virtual_network" "active_directory" {
   resource_group_name = azurerm_resource_group.network.name
   address_space       = ["10.42.0.0/16"]
   dns_servers = [
-    "10.42.0.4",
-    "10.42.0.5"
+    "10.42.0.4"
   ]
 }
 
@@ -20,8 +19,7 @@ resource "azurerm_virtual_network" "citrix" {
   resource_group_name = azurerm_resource_group.network.name
   address_space       = ["10.69.0.0/21"]
   dns_servers = [
-    "10.42.0.4",
-    "10.42.0.5"
+    "10.42.0.4"
   ]
 }
 
