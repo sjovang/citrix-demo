@@ -31,3 +31,12 @@ module "active_directory" {
   active_directory_domain       = "ksulab.cloud"
   key_vault_id                  = azurerm_key_vault.citrix_secrets.id
 }
+
+resource "azurerm_resource_group" "cloud_connectors" {
+    name = "RG-Citrix-Cloud-Connectors"
+    location = var.location
+}
+
+module "cloud_connectors" {
+  source = "./modules/cloud-connetors"
+}
