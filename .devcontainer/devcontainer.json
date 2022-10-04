@@ -5,7 +5,7 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": { 
-			"TERRAFORM_VERSION": "1.3.0",
+			"TERRAFORM_VERSION": "0.14.5",
 			"TFLINT_VERSION": "0.24.1",
 			"TERRAGRUNT_VERSION": "0.28.1",
 			"INSTALL_AZURE_CLI": "true",
@@ -57,10 +57,13 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "terraform --version",
+	"postCreateCommand": ".devcontainer/scripts/dependencies.sh",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 	"features": {
-		"homebrew": "latest"
+		"homebrew": "latest",
+		"terraform": "latest",
+		"azure-cli": "latest"
 	}
 }
