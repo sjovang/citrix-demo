@@ -41,4 +41,9 @@ resource "azurerm_resource_group" "cloud_connectors" {
 module "cloud_connectors" {
   source         = "./modules/cloud-connectors"
   resource_group = azurerm_resource_group.cloud_connectors
+  ad_domain_name = "ksulab.cloud"
+  ad_domainjoin_user = "demogod"
+  ad_domainjoin_password = module.active_directory.domain_account_password
+  key_vault_id = azurerm_key_vault.citrix_secrets.id
+  virtual_network = azurerm_virtual_network.citrix
 }
