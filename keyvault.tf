@@ -14,7 +14,7 @@ resource "azurerm_key_vault" "citrix_secrets" {
 resource "azurerm_key_vault_access_policy" "admin" {
   key_vault_id = azurerm_key_vault.citrix_secrets.id
   tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = data.azurerm_client_config.current.object_id
+  object_id    = data.azuread_user.admin_account.object_id
 
   certificate_permissions = [
     "Create",

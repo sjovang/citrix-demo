@@ -1,3 +1,21 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 3.0.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.0.0"
+    }
+  }
+}
+
+resource "random_password" "local_administrator_password" {
+  length  = 32
+  special = false
+}
+
 resource "azurerm_resource_group" "active_directory" {
   name     = "RG-Active-Directory"
   location = var.location
@@ -82,4 +100,71 @@ resource "azurerm_subnet" "ad_ds" {
 resource "azurerm_subnet_network_security_group_association" "ad_ds" {
   subnet_id                 = azurerm_subnet.ad_ds.id
   network_security_group_id = azurerm_network_security_group.ad_ds.id
+}
+
+// Create domain controller VM
+resource "azurerm_network_interface" "dc" {
+  name                = "NIC-DC1"
+  resource_group_name = azurerm_resource_group.active_directory.name
+  location            = azurerm_resource_group.active_directory.location
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.ad_ds.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
+resource "azurerm_windows_virtual_machine" "dc" {
+  name                = "VM-DC1"
+  resource_group_name = azurerm_resource_group.active_directory.name
+  location            = azurerm_resource_group.active_directory.location
+  size                = "Standard_B2ms"
+  admin_username      = var.admin_username
+  admin_password      = random_password.local_administrator_password.result
+
+  network_interface_ids = [
+    azurerm_network_interface.dc.id
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2022-Datacenter"
+    version   = "latest"
+  }
+}
+
+locals {
+  import_command       = "Import-Module ADDSDeployment"
+  password_command     = "$password = ConvertTo-SecureString ${random_password.local_administrator_password.result} -AsPlainText -Force"
+  install_ad_command   = "Install-WindowsFeature -Name AD-Domain-Services,DNS -IncludeManagementTools"
+  configure_ad_command = "Install-ADDSForest -CreateDnsDelegation:$false -DomainName ${var.active_directory_domain} -DomainNetbiosName ${var.active_directory_netbios_name} -InstallDns:$true -SafeModeAdministratorPassword $password -Force:$true"
+  powershell_command   = "${local.import_command}; ${local.password_command}; ${local.install_ad_command}; ${local.configure_ad_command}; shutdown -r -t 60; exit 0"
+}
+
+resource "azurerm_virtual_machine_extension" "create_active_directory_forest" {
+  name                       = "active-directory-forest"
+  virtual_machine_id         = azurerm_windows_virtual_machine.dc.id
+  publisher                  = "Microsoft.Compute"
+  type                       = "CustomScriptExtension"
+  type_handler_version       = "1.10"
+  auto_upgrade_minor_version = true
+
+  settings = <<SETTINGS
+  {
+      "commandToExecute": "powershell.exe -Command \"${local.powershell_command}\""
+  }
+  SETTINGS
+}
+
+resource "azurerm_key_vault_secret" "local_administrator_account" {
+  name         = "VM-DC1-${var.admin_username}"
+  key_vault_id = var.key_vault_id
+  value        = random_password.local_administrator_password.result
 }

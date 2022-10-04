@@ -12,5 +12,6 @@ terraform {
 }
 
 resource "random_password" "local_administrator_password" {
-  length = 32
+  length  = 32
+  special = false
 }
