@@ -1,4 +1,5 @@
 terraform {
+  backend "azurerm" {}
   required_version = ">=1.3.0"
   required_providers {
     azurerm = {
@@ -33,10 +34,11 @@ module "active_directory" {
 }
 
 resource "azurerm_resource_group" "cloud_connectors" {
-    name = "RG-Citrix-Cloud-Connectors"
-    location = var.location
+  name     = "RG-Citrix-Cloud-Connectors"
+  location = var.location
 }
 
 module "cloud_connectors" {
-  source = "./modules/cloud-connetors"
+  source         = "./modules/cloud-connectors"
+  resource_group = azurerm_resource_group.cloud_connectors
 }
