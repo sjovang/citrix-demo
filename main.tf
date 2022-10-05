@@ -37,6 +37,11 @@ module "active_directory" {
   active_directory_netbios_name = "ksulab"
   active_directory_domain       = "ksulab.cloud"
   key_vault_id                  = azurerm_key_vault.citrix_secrets.id
+
+  depends_on = [
+    // TODO: Move keyvault to separate module to avoid all these depends_on statements
+    azurerm_key_vault_access_policy.admin
+  ]
 }
 
 resource "azurerm_resource_group" "cloud_connectors" {
@@ -52,4 +57,9 @@ module "cloud_connectors" {
   ad_domainjoin_password = module.active_directory.domain_account_password
   key_vault_id           = azurerm_key_vault.citrix_secrets.id
   virtual_network        = azurerm_virtual_network.citrix
+
+  depends_on = [
+    module.active_directory,
+    azurerm_key_vault_access_policy.admin
+  ]
 }

@@ -16,6 +16,11 @@ resource "azurerm_key_vault_access_policy" "admin" {
   tenant_id    = data.azurerm_client_config.current.tenant_id
   object_id    = data.azuread_user.admin_account.object_id
 
+  // TODO: check if this fixes the destroy behaviour where the access policy is deleted before some secrets and cause a crash
+  depends_on = [
+    azurerm_key_vault.citrix_secrets
+  ]
+
   certificate_permissions = [
     "Create",
     "Delete",
