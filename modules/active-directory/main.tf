@@ -78,6 +78,20 @@ resource "azurerm_network_security_group" "ad_ds" {
   }
 
   security_rule {
+    name              = "in_allow_rdp_mgmt"
+    priority          = 1000
+    direction         = "Inbound"
+    access            = "Allow"
+    protocol          = "*"
+    source_port_range = "*"
+    destination_port_ranges = [
+      "3389",
+    ]
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "in_deny_all"
     priority                   = 4096
     direction                  = "Inbound"
@@ -113,6 +127,11 @@ resource "azurerm_network_interface" "dc" {
     subnet_id                     = azurerm_subnet.ad_ds.id
     private_ip_address_allocation = "Dynamic"
   }
+}
+
+resource "azurerm_network_interface_application_security_group_association" "dc_asg" {
+  network_interface_id          = azurerm_network_interface.dc.id
+  application_security_group_id = azurerm_application_security_group.ad_ds.id
 }
 
 resource "azurerm_windows_virtual_machine" "dc" {

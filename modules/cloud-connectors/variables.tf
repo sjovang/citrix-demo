@@ -7,18 +7,18 @@ variable "resource_group" {
 }
 
 variable "virtual_network" {
-    type = object({
-        name                = string
-        resource_group_name = string
-    })
+  type = object({
+    name                = string
+    resource_group_name = string
+  })
 }
 
 variable "cloud_connectors_address_prefixes" {
-    type = list(string)
-    default = [
-        "10.69.0.0/24"
-    ]
-    description = "Address prefixes for cloud connectors subnet"
+  type = list(string)
+  default = [
+    "10.69.0.0/24"
+  ]
+  description = "Address prefixes for cloud connectors subnet"
 }
 
 variable "vm_size" {
