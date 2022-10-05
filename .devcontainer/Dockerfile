@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-bullseye
 COPY library-scripts/*.sh /tmp/library-scripts/
 
 # [Option] Install zsh
-ARG INSTALL_ZSH="true"
+ARG INSTALL_ZSH="false"
 # [Option] Upgrade OS packages to their latest versions
 ARG UPGRADE_PACKAGES="false"
 
