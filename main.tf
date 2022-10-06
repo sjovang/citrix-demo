@@ -44,6 +44,10 @@ module "active_directory" {
   active_directory_domain       = "ksulab.cloud"
   key_vault_id                  = module.key_vault.key_vault_id
 
+  depends_on = [
+    module.key_vault
+  ]
+
 }
 
 resource "azurerm_resource_group" "cloud_connectors" {
@@ -55,6 +59,7 @@ module "cloud_connectors" {
   source                 = "./modules/cloud-connectors"
   resource_group         = azurerm_resource_group.cloud_connectors
   ad_domain_name         = "ksulab.cloud"
+  ad_ou_path             = "OU=Computers,DC=ksulab,DC=cloud"
   ad_domainjoin_user     = "demogod@ksulab.cloud"
   ad_domainjoin_password = module.active_directory.domain_account_password
   key_vault_id           = module.key_vault.key_vault_id
