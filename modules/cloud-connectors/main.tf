@@ -65,3 +65,19 @@ module "cloud_connector" {
   ad_domainjoin_password = var.ad_domainjoin_password
   key_vault_id           = var.key_vault_id
 }
+
+/* resource "azurerm_virtual_machine_extension" "cloud_connector" {
+  count = length(module.cloud_connector.vm)
+  name = "citrix-cloud-connector"
+  virtual_machine_id = module.cloud_connector.vm[count.index].id
+  publisher = ""
+  type = ""
+  type_handler_version = ""
+  auto_upgrade_minor_version = true
+
+  settings = jsonencode(
+    {
+
+    }
+  )
+} */
