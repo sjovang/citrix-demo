@@ -5,3 +5,5 @@ az network bastion tunnel --name examplebastion --resource-group RG-Citrix-Netwo
 $pwd = ConvertTo-Securestring '' -AsPlainText -Force
 $c = New-Object -typename System.Management.Automation.PSCredential -argumentlist "demogod",$pwd
 add-computer  -domain "ksulab.cloud" -restart -credentials $c
+
+we still have a problem with deleting secrets because the access policy is deleted before the secrets from other modules

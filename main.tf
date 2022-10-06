@@ -66,6 +66,7 @@ module "cloud_connectors" {
   virtual_network        = azurerm_virtual_network.citrix
 
   depends_on = [
-    module.active_directory
+    module.active_directory,
+    module.key_vault
   ]
 }
