@@ -187,3 +187,19 @@ resource "azurerm_key_vault_secret" "local_administrator_account" {
   key_vault_id = var.key_vault_id
   value        = random_password.local_administrator_password.result
 }
+
+/*
+  This is a bad idea, but sufficient for a demo. Provisioners should always be used as a last resort.
+  We need to create an OU to domain join our VMs as the ADDomainJoinExtension cannot use OU=Computers
+
+  In a real environment you should use ad_ou from hashicorp/ad, but that would require terraform to run with connectivity to the domain controller
+*/
+resource "null_resource" "create_ou" {
+  depends_on = [
+    azurerm_virtual_machine_extension.create_active_directory_forest
+  ]
+
+  provisioner "local-exec" {
+    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${azurerm_resource_group.active_directory.name} --name ${azurerm_windows_virtual_machine.dc.name} --scripts 'Import-Module ADDSDeployment; New-ADOrganizationalUnit -Name Citrix-Demo -Path \"DC=${var.active_directory_netbios_name},DC=${split(".",var.active_directory_domain)[1]}\"'"
+  }
+}

@@ -19,6 +19,18 @@ resource "azurerm_network_security_group" "cloud_connector" {
   resource_group_name = var.resource_group.name
 
   security_rule {
+    name                       = "in_allow_mgmt"
+    priority                   = 1000
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = 3389
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "in_deny_all"
     priority                   = 4096
     direction                  = "Inbound"
