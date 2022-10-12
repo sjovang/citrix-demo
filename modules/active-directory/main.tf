@@ -200,6 +200,6 @@ resource "null_resource" "create_ou" {
   ]
 
   provisioner "local-exec" {
-    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${azurerm_resource_group.active_directory.name} --name ${azurerm_windows_virtual_machine.dc.name} --scripts 'Import-Module ADDSDeployment; New-ADOrganizationalUnit -Name Citrix-Demo -Path \"DC=${var.active_directory_netbios_name},DC=${split(".",var.active_directory_domain)[1]}\"'"
+    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${azurerm_resource_group.active_directory.name} --name ${azurerm_windows_virtual_machine.dc.name} --scripts 'Import-Module ADDSDeployment; New-ADOrganizationalUnit -Name Citrix-Demo -Path \"DC=${var.active_directory_netbios_name},DC=${split(".", var.active_directory_domain)[1]}\"'"
   }
 }

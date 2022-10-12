@@ -56,14 +56,18 @@ resource "azurerm_resource_group" "cloud_connectors" {
 }
 
 module "cloud_connectors" {
-  source                 = "./modules/cloud-connectors"
-  resource_group         = azurerm_resource_group.cloud_connectors
-  ad_domain_name         = "ksulab.cloud"
-  ad_ou_path             = "OU=Citrix-Demo,DC=ksulab,DC=cloud"
-  ad_domainjoin_user     = "demogod@ksulab.cloud"
-  ad_domainjoin_password = module.active_directory.domain_account_password
-  key_vault_id           = module.key_vault.key_vault_id
-  virtual_network        = azurerm_virtual_network.citrix
+  source                            = "./modules/cloud-connectors"
+  resource_group                    = azurerm_resource_group.cloud_connectors
+  ad_domain_name                    = "ksulab.cloud"
+  ad_ou_path                        = "OU=Citrix-Demo,DC=ksulab,DC=cloud"
+  ad_domainjoin_user                = "demogod@ksulab.cloud"
+  ad_domainjoin_password            = module.active_directory.domain_account_password
+  key_vault_id                      = module.key_vault.key_vault_id
+  virtual_network                   = azurerm_virtual_network.citrix
+  citrix_cloud_api_id               = var.citrix_cloud_api_id
+  citrix_cloud_api_key              = var.citrix_cloud_api_key
+  citrix_cloud_customer_id          = var.citrix_cloud_customer_id
+  citrix_cloud_resource_location_id = var.citrix_cloud_resource_location_id
 
   depends_on = [
     module.active_directory,
