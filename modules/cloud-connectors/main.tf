@@ -95,7 +95,7 @@ module "cloud_connector" {
 }
 */
 
-resource "azurerm_virtual_machine_extension" "cloud_connector" {
+/* resource "azurerm_virtual_machine_extension" "cloud_connector" {
   count                      = 1
   name                       = "citrix-cloud-connector"
   virtual_machine_id         = module.cloud_connector[count.index].vm.id
@@ -110,4 +110,4 @@ resource "azurerm_virtual_machine_extension" "cloud_connector" {
       "https://tsgterraformcugtech22.blob.core.windows.net/scripts/install_cloud_connector.ps1"
     ]
   })
-}
+} */
