@@ -78,24 +78,7 @@ module "cloud_connector" {
   key_vault_id           = var.key_vault_id
 }
 
-/* There are probably better ways to do this than using a null_resource and invoking az vm run-command */
-/*resource "null_resource" "install_cloud_connector" {
-  depends_on = [
-    module.cloud_connector
-  ]
-  count = 2
-
-  /* provisioner "local-exec" {
-    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${var.resource_group.name} -n ${module.cloud_connector[count.index].vm.name} --scripts '@InstallCloudConnector.ps1' --parameters APIID=${var.citrix_cloud_api_id} APIKey=${var.citrix_cloud_api_key} CustomerName=${var.citrix_cloud_customer_id} ResourceLocationID=${var.citrix_cloud_resource_location_id}"
-  } */
-/*
-  provisioner "local-exec" {
-    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${var.resource_group.name} -n ${module.cloud_connector[count.index].vm.name} --scripts 'New-Item -Path C:\\Temp -ItemType Directory -Force; $config = @{ \"customerName\": ${var.citrix_cloud_customer_id}, \"clientId\": ${var.citrix_cloud_api_id}, \"clientSecret\": ${var.citrix_cloud_api_key}, \"resourceLocationId\": ${var.citrix_cloud_resource_location_id} }; $json = $config | ConvertFrom-Json; $json | ConvertTo-Json | Out-File \"C:\\Temp\\cc_config.json\"; Invoke-WebRequest -Uri https://downloads.cloud.com/${var.citrix_cloud_customer_id}/connector/cwcconnector.exe -OutFile C:\\Temp\\cwcconnector.exe'"
-  }
-}
-*/
-
-/* resource "azurerm_virtual_machine_extension" "cloud_connector" {
+resource "azurerm_virtual_machine_extension" "cloud_connector" {
   count                      = 1
   name                       = "citrix-cloud-connector"
   virtual_machine_id         = module.cloud_connector[count.index].vm.id
@@ -110,4 +93,4 @@ module "cloud_connector" {
       "https://tsgterraformcugtech22.blob.core.windows.net/scripts/install_cloud_connector.ps1"
     ]
   })
-} */
+}

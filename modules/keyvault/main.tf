@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "keyvault" {
 }
 
 resource "azurerm_key_vault" "citrix_secrets" {
-  name                = "KV-Citrix-Secrets"
+  name                = "KV-Citrix"
   location            = azurerm_resource_group.keyvault.location
   resource_group_name = azurerm_resource_group.keyvault.name
   tenant_id           = var.tenant_id
