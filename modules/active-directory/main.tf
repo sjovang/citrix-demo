@@ -78,6 +78,20 @@ resource "azurerm_network_security_group" "ad_ds" {
   }
 
   security_rule {
+    name              = "in_allow_rdp_mgmt"
+    priority          = 1000
+    direction         = "Inbound"
+    access            = "Allow"
+    protocol          = "*"
+    source_port_range = "*"
+    destination_port_ranges = [
+      "3389",
+    ]
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "in_deny_all"
     priority                   = 4096
     direction                  = "Inbound"
@@ -113,6 +127,11 @@ resource "azurerm_network_interface" "dc" {
     subnet_id                     = azurerm_subnet.ad_ds.id
     private_ip_address_allocation = "Dynamic"
   }
+}
+
+resource "azurerm_network_interface_application_security_group_association" "dc_asg" {
+  network_interface_id          = azurerm_network_interface.dc.id
+  application_security_group_id = azurerm_application_security_group.ad_ds.id
 }
 
 resource "azurerm_windows_virtual_machine" "dc" {
@@ -167,4 +186,20 @@ resource "azurerm_key_vault_secret" "local_administrator_account" {
   name         = "VM-DC1-${var.admin_username}"
   key_vault_id = var.key_vault_id
   value        = random_password.local_administrator_password.result
+}
+
+/*
+  This is a bad idea, but sufficient for a demo. Provisioners should always be used as a last resort.
+  We need to create an OU to domain join our VMs as the ADDomainJoinExtension cannot use OU=Computers
+
+  In a real environment you should use ad_ou from hashicorp/ad, but that would require terraform to run with connectivity to the domain controller
+*/
+resource "null_resource" "create_ou" {
+  depends_on = [
+    azurerm_virtual_machine_extension.create_active_directory_forest
+  ]
+
+  provisioner "local-exec" {
+    command = "az vm run-command invoke --command-id RunPowerShellScript -g ${azurerm_resource_group.active_directory.name} --name ${azurerm_windows_virtual_machine.dc.name} --scripts 'Import-Module ADDSDeployment; New-ADOrganizationalUnit -Name Citrix-Demo -Path \"DC=${var.active_directory_netbios_name},DC=${split(".", var.active_directory_domain)[1]}\"'"
+  }
 }
