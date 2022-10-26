@@ -37,8 +37,10 @@
 				"settings": { 
 					"terraform.languageServer": {
 						"enabled": true,
-						"args": []
 					},
+					"terraform.languageServer.args": [
+						"serve"
+					],
 					"azureTerraform.terminal": "integrated"
 					},
 
@@ -47,7 +49,8 @@
 					"hashicorp.terraform",
 					"ms-vscode.azurecli",
 					"ms-azuretools.vscode-azureterraform",
-					"ms-azuretools.vscode-docker"
+					"ms-azuretools.vscode-docker",
+					"GitHub.copilot"
 				]
 		}
 	},

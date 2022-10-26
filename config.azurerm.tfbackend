@@ -1,0 +1,5 @@
+resource_group_name = "Terraform-CUGTech-Demo"
+storage_account_name = "tsgterraformcugtech22"
+container_name = "ctxdemo"
+key = "terraform.tfstate"
+subscription_id = "da3b3f56-230a-4ed2-998c-d8fc7cab33d6"
