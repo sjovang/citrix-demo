@@ -1,0 +1,51 @@
+name: 'Test'
+
+on:
+  push:
+    branches:
+
+env:
+  TF_STATE_RESOURCE_GROUP: ${{ secrets.TF_STATE_RESOURCE_GROUP }}
+  TF_STATE_STORAGE_ACCOUNT: ${{ secrets.TF_STATE_STORAGE_ACCOUNT }}
+  TF_STATE_CONTAINER: ${{ secrets.TF_STATE_CONTAINER }}
+  TF_STATE_KEY: ${{ secrets.TF_STATE_KEY }}
+  TF_STATE_SUBSCRIPTION_ID: ${{ secrets.TF_STATE_SUBSCRIPTION_ID }}
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  TF_VAR_root_id: ${{ secrets.TF_VAR_ROOT_ID }}
+  TF_VAR_root_name: ${{ secrets.TF_VAR_ROOT_NAME }}
+  TF_VAR_security_alerts_email_address: ${( secrets.TF_VAR_SECURITY_ALERTS_EMAIL_ADDRESS )}
+  TF_VAR_demo_subscription_id: ${{ secrets.TF_VAR_TC22_SUBSCRIPTION_ID}}
+
+jobs:
+  tests:
+    name: 'Unit Tests'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_wrapper: false
+
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
+
+    - name: Terraform Init
+      id: init
+      run: terraform init -backend-config="resource_group_name=$TF_STATE_RESOURCE_GROUP" -backend-config="storage_account_name=$TF_STATE_STORAGE_ACCOUNT" -backend-config="container_name=$TF_STATE_CONTAINER" -backend-config="key=$TF_STATE_KEY" -backend-config="subscription_id=$TF_STATE_SUBSCRIPTION_ID"
+
+    - name: Terraform Validate
+      id: validate
+      run: terraform validate -no-color
