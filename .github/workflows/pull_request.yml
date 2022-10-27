@@ -15,10 +15,6 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-  TF_VAR_root_id: ${{ secrets.TF_VAR_ROOT_ID }}
-  TF_VAR_root_name: ${{ secrets.TF_VAR_ROOT_NAME }}
-  TF_VAR_security_alerts_email_address: ${( secrets.TF_VAR_SECURITY_ALERTS_EMAIL_ADDRESS )}
-  TF_VAR_tc22_subscription_id: ${{ secrets.TF_VAR_TC22_SUBSCRIPTION_ID}}
 
 jobs:
   docs:
