@@ -2,23 +2,23 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azuread" {
-  version     = "2.29.0"
-  constraints = "2.29.0"
+  version     = "2.31.0"
+  constraints = "2.31.0"
   hashes = [
-    "h1:+vt50mv/NfGLsgxv2/3/3tr+/iNQArwjbEIDxZKbE3w=",
-    "h1:n/Dcv/K0oKDHj/vRImKlzB2DYY4Gafv7TarBNn5aRZw=",
-    "zh:049f0b90042679247ebe9ae8e4e7bbcadd0d8764a2d9f6b7c84b0985a0550da9",
-    "zh:0d1e0a64c36451b77a6208a02a586e4f39960adc1d2db867383adeafaaf170bb",
-    "zh:124a019672dcde52f98bc6f2160b764be92b1648b172e08d454a5e938e7d78fd",
-    "zh:1b7dae68749615039a3dd2fd00398f6a283eea79ae69843a7420da31937c14b9",
+    "h1:0D8+cQBlCyA50NiiTJwNDK9QjKfZsjuHgXTFRlhIZyg=",
+    "h1:M5ELmP8Qi/vGanQ5nYaD3AStPUh8xOof1QgqaUM6V1M=",
+    "zh:02a64db03707cc6970ab28a1da00d7fa011cc54e8a7806209f31bd8aad1794e1",
+    "zh:077ffce8135a57544ec3c227bbe0ee5f6ca649223bd1dc0bbbd31d3fdf616830",
+    "zh:0a369de6132edb0f4a69f2aa472b23f9bb5c430a3d539146d1c18d4cc7b12c7f",
+    "zh:14bfc5f2354c1389eb7ed8bf5a5eaadc9940e18c2dd15058eb9b48ea5c37ae66",
     "zh:1c3e89cf19118fc07d7b04257251fc9897e722c16e0a0df7b07fcd261f8c12e7",
-    "zh:3f119ac8244d58208e7e0ad24924ae7ea7e5b6f2b0049ddf79e9fbc13bbf4c5f",
-    "zh:59c8d53cf3a0c132fa4e1ee14358a4a1670af35c5a4ba4da8701cb6bce9b09fa",
-    "zh:5a4d0a6fe3f9d6e612e7bb1a4845c55efea906e09e4fd7b9883d67add27af1ab",
-    "zh:79c42325602cff91aabc8000fcece3f808b152b2e839c9add63c83cf60ed91fb",
-    "zh:a77b87f9fc87bb9fa892bb0a3fa695f3ad57dbd35831ead9dc8709bc5fc9f002",
-    "zh:ab5b1c823375aa5ee002081f72e28bd15cafecb47b546247b45fb3e165aa7bdb",
-    "zh:efa4091ed8f124d261b3771259f28ca70fd926096445c0d6457342cb2f72092d",
+    "zh:5629f020ac3409ad34a39e221fb2e63f82948c3eb936508331d5a7f870556e9d",
+    "zh:5b419eb59fa4e0b9c520c5cd5028f236bce6d9ab701c5ccca23cc040d3d690c4",
+    "zh:5e7e6207fd58a3e9ba54b7333169a3e3ea693c25c8f477622536600a8a09a3f1",
+    "zh:a9a552ad36d7a3db4554c6fbc716cf8631328331ea6188eddb4038b4c213ff46",
+    "zh:aee812d33916e5fdfb4d58ce74af0f3b2a7a58dbfb5ec8e0b42b5780ceff5414",
+    "zh:ce46738cd1909675b980bb90b9c3d919a4d1d655b4296082b86b6622ce818f7a",
+    "zh:db02dbe5ce139610688b354b15eb934f9f67ab32d6c5d63690dce6f9b8d90904",
   ]
 }
 
