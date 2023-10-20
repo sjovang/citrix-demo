@@ -2,23 +2,23 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azuread" {
-  version     = "2.29.0"
-  constraints = "2.29.0"
+  version     = "2.44.0"
+  constraints = "2.44.0"
   hashes = [
-    "h1:+vt50mv/NfGLsgxv2/3/3tr+/iNQArwjbEIDxZKbE3w=",
-    "h1:n/Dcv/K0oKDHj/vRImKlzB2DYY4Gafv7TarBNn5aRZw=",
-    "zh:049f0b90042679247ebe9ae8e4e7bbcadd0d8764a2d9f6b7c84b0985a0550da9",
-    "zh:0d1e0a64c36451b77a6208a02a586e4f39960adc1d2db867383adeafaaf170bb",
-    "zh:124a019672dcde52f98bc6f2160b764be92b1648b172e08d454a5e938e7d78fd",
-    "zh:1b7dae68749615039a3dd2fd00398f6a283eea79ae69843a7420da31937c14b9",
+    "h1:nSaTAt+S6YP49mjTS4jkhqN+khvIphGNQkeA1d+lrh4=",
+    "h1:p68BLZtzwxbIxssZQx+RHAMaYiqbHDFSlyaTNGQbpCA=",
+    "zh:06d0061a5ba488a4bdd661117f410f0bce4b103153ddba6854c06a68cf50542b",
+    "zh:16ec95329d12de191eca3f75e066e9d70730fd7ff7b175fe1c61f247b9aba9e0",
     "zh:1c3e89cf19118fc07d7b04257251fc9897e722c16e0a0df7b07fcd261f8c12e7",
-    "zh:3f119ac8244d58208e7e0ad24924ae7ea7e5b6f2b0049ddf79e9fbc13bbf4c5f",
-    "zh:59c8d53cf3a0c132fa4e1ee14358a4a1670af35c5a4ba4da8701cb6bce9b09fa",
-    "zh:5a4d0a6fe3f9d6e612e7bb1a4845c55efea906e09e4fd7b9883d67add27af1ab",
-    "zh:79c42325602cff91aabc8000fcece3f808b152b2e839c9add63c83cf60ed91fb",
-    "zh:a77b87f9fc87bb9fa892bb0a3fa695f3ad57dbd35831ead9dc8709bc5fc9f002",
-    "zh:ab5b1c823375aa5ee002081f72e28bd15cafecb47b546247b45fb3e165aa7bdb",
-    "zh:efa4091ed8f124d261b3771259f28ca70fd926096445c0d6457342cb2f72092d",
+    "zh:82530c85481617fd2d7e2ad7c6a2318da19dd8a04566c3e39c35d69d9270f4c5",
+    "zh:9879fddc7740e9a68066d820f49e3941b6514cdf72b86162d033a2f9dd490340",
+    "zh:a152d237396cffd701ae184146f3ff9076f617aa72177e11ad76b828ab9518ca",
+    "zh:aef2da192bf30856f317525b2a7a02da277089a562ad5a74edf8fc059bd2ab58",
+    "zh:b142f05ad261afc06bf74a399294df1330c556a69ef9605fc64ae2aa8eebe8e8",
+    "zh:b177d35dec6dfd2b962e6f4239229645c30d1625c3cafde539a2beab312d6914",
+    "zh:ce2c8571e0e0bb350abb312fbfc90795663fd64d43c078477cc75031e3078c87",
+    "zh:e0b1577910276d7cbb11c6002a27f7918a026fd5b5c4170c28a797fe3167a3db",
+    "zh:f42583d31cd3a77d02fafbf8d744a37c4497ac05554f264b30908b621449731d",
   ]
 }
 
