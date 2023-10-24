@@ -2,23 +2,23 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azuread" {
-  version     = "2.29.0"
-  constraints = "2.29.0"
+  version     = "2.44.1"
+  constraints = "2.44.1"
   hashes = [
-    "h1:+vt50mv/NfGLsgxv2/3/3tr+/iNQArwjbEIDxZKbE3w=",
-    "h1:n/Dcv/K0oKDHj/vRImKlzB2DYY4Gafv7TarBNn5aRZw=",
-    "zh:049f0b90042679247ebe9ae8e4e7bbcadd0d8764a2d9f6b7c84b0985a0550da9",
-    "zh:0d1e0a64c36451b77a6208a02a586e4f39960adc1d2db867383adeafaaf170bb",
-    "zh:124a019672dcde52f98bc6f2160b764be92b1648b172e08d454a5e938e7d78fd",
-    "zh:1b7dae68749615039a3dd2fd00398f6a283eea79ae69843a7420da31937c14b9",
+    "h1:KC1KycEl1KcVFpn8gwYnF0MjRqTHGvEdNaQxstVc8rg=",
+    "h1:KvSUCXWnUl4QMYztVHqsFSMzs9mtOHxLOVTWU932ktM=",
+    "zh:1017265a34c16e7f68db4dfcd52dba818ddeec31f03325700c4547d93b36c60c",
     "zh:1c3e89cf19118fc07d7b04257251fc9897e722c16e0a0df7b07fcd261f8c12e7",
-    "zh:3f119ac8244d58208e7e0ad24924ae7ea7e5b6f2b0049ddf79e9fbc13bbf4c5f",
-    "zh:59c8d53cf3a0c132fa4e1ee14358a4a1670af35c5a4ba4da8701cb6bce9b09fa",
-    "zh:5a4d0a6fe3f9d6e612e7bb1a4845c55efea906e09e4fd7b9883d67add27af1ab",
-    "zh:79c42325602cff91aabc8000fcece3f808b152b2e839c9add63c83cf60ed91fb",
-    "zh:a77b87f9fc87bb9fa892bb0a3fa695f3ad57dbd35831ead9dc8709bc5fc9f002",
-    "zh:ab5b1c823375aa5ee002081f72e28bd15cafecb47b546247b45fb3e165aa7bdb",
-    "zh:efa4091ed8f124d261b3771259f28ca70fd926096445c0d6457342cb2f72092d",
+    "zh:21c11e4cb086144bd8fa407088796e9733579fdc6057693ca00fa16ce3718e60",
+    "zh:3aef02627d2f116b6328cf1177db526b372d3fecb6e1147a5d502130843398d5",
+    "zh:5f019b3025e3a88c4d0d32f32dfec3e3349c8bd8d9a7ea6ecf1303d564b86d5b",
+    "zh:6217fb9b7c7c410aa7dec3c91fc7cf083de60d935cdbaf98fb958f1ddbadfa06",
+    "zh:6caeb291f4ef71ea5981493669f41c399cb2b8374ec783edec31e174dbe97364",
+    "zh:7c9e0eca51fc352876c1731a4f5c1bbd0c602d621f7c0c656f9eb895f6abb9cf",
+    "zh:81c3854eb4e81c53811f6100bf2b1f1cf6398d13aeb29d57a379b6937fd10d42",
+    "zh:8efd3b5998f7ecc5147c7101f6821e59748af2e885c65bc4897a3ae1f13797a7",
+    "zh:a79b5d63399f682558ea0e38048b785d81c780d8dbd406dcd0635373659e1229",
+    "zh:de9a137b704083338b194c67b27009d25ec31230a9d351a98bc4a03c4066ed6b",
   ]
 }
 
