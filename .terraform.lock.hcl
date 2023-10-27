@@ -2,23 +2,23 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azuread" {
-  version     = "2.29.0"
-  constraints = "2.29.0"
+  version     = "2.45.0"
+  constraints = "2.45.0"
   hashes = [
-    "h1:+vt50mv/NfGLsgxv2/3/3tr+/iNQArwjbEIDxZKbE3w=",
-    "h1:n/Dcv/K0oKDHj/vRImKlzB2DYY4Gafv7TarBNn5aRZw=",
-    "zh:049f0b90042679247ebe9ae8e4e7bbcadd0d8764a2d9f6b7c84b0985a0550da9",
-    "zh:0d1e0a64c36451b77a6208a02a586e4f39960adc1d2db867383adeafaaf170bb",
-    "zh:124a019672dcde52f98bc6f2160b764be92b1648b172e08d454a5e938e7d78fd",
-    "zh:1b7dae68749615039a3dd2fd00398f6a283eea79ae69843a7420da31937c14b9",
+    "h1:/LuV4Jyl+t/BZxRsIyuz2VRKPPFxH18FcO2xMnIWlUE=",
+    "h1:/uvs5iEiakqbl4PEGzNob8Rqbnw7YaeXfjnTMfJJK2w=",
+    "zh:08d80f6ab1d8bcb02976a5fde0b108fc008093a7a6f1b5d083d5cf1e01dc0b86",
     "zh:1c3e89cf19118fc07d7b04257251fc9897e722c16e0a0df7b07fcd261f8c12e7",
-    "zh:3f119ac8244d58208e7e0ad24924ae7ea7e5b6f2b0049ddf79e9fbc13bbf4c5f",
-    "zh:59c8d53cf3a0c132fa4e1ee14358a4a1670af35c5a4ba4da8701cb6bce9b09fa",
-    "zh:5a4d0a6fe3f9d6e612e7bb1a4845c55efea906e09e4fd7b9883d67add27af1ab",
-    "zh:79c42325602cff91aabc8000fcece3f808b152b2e839c9add63c83cf60ed91fb",
-    "zh:a77b87f9fc87bb9fa892bb0a3fa695f3ad57dbd35831ead9dc8709bc5fc9f002",
-    "zh:ab5b1c823375aa5ee002081f72e28bd15cafecb47b546247b45fb3e165aa7bdb",
-    "zh:efa4091ed8f124d261b3771259f28ca70fd926096445c0d6457342cb2f72092d",
+    "zh:2571a343d8e1af699c1e1d815a5654ad98665427c6f3912b41557ff775a73c75",
+    "zh:2a20afb34eaca73c2206250abbb40997498a1a9aca34e8d6524370fbf6278f82",
+    "zh:3044cb26396399f0082ee06a8f788c6260ab12e752f64c0d7921e7d4e39c14b8",
+    "zh:311fcfdee359129748caaae5b204113a3e3b7e1fc00704c21300461114eb2075",
+    "zh:a3af689267be6f7ebfd9726aa2bfd4faabb9efbcab9da24949ae5fec87d18d23",
+    "zh:adbe97fd77ef94c5f1fc8b10e7dc87048035dc39ff7ea81042350fc311034850",
+    "zh:c6ce4f348596515d1748c047b51462cb40802b57316b13f8fb4760ef1c5e775c",
+    "zh:d0b8854b5097ffd6f6d6a14544f74745b23ba949472351e585c57402f5ca28ae",
+    "zh:ebdf01510f10e468aaa6c8f5fd9fc50b7232acbbe5fcbc50e8bea2de5d964d3e",
+    "zh:f3a55da36dcfd0bf34f785ce3c47dbe8538408c1aaf729604a6ef841fc8ce6f4",
   ]
 }
 
